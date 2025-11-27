@@ -6,6 +6,7 @@ import { auth } from "@/firebase/firebase.init";
 import { useRouter } from "next/navigation";
 import GoogleLoginBtn from "@/components/auth/GoogleLoginBtn";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function RegisterPage() {
   const router = useRouter();

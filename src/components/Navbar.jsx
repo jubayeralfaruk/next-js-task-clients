@@ -2,6 +2,7 @@
 
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 // import Image from "next/image";
 
 export default function Navbar() {

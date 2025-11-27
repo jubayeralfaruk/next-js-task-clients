@@ -15,7 +15,6 @@ export default function GoogleLoginBtn() {
         { callbackUrl: "/" },
         toast.success("Google login successfully.")
       );
-      // toast.success("Google login successful.");
     } catch (error) {
       console.error("Login error:", error);
       setLoading(false);
