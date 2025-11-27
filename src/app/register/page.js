@@ -37,6 +37,7 @@ export default function RegisterPage() {
         photoURL: photoURL || null,
       });
 
+      toast.success("Register successful.")
       // Redirect to login page
       router.push("/login");
     } catch (err) {

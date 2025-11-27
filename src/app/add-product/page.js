@@ -1,7 +1,9 @@
 "use client";
+
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function AddProductPage() {
   const { data: session, status } = useSession();
@@ -29,37 +31,38 @@ export default function AddProductPage() {
       setMessage("Please fill all required fields");
       return;
     }
+
     const now = new Date();
     const date = now.toLocaleString();
+    const createBy = session.user.email;
 
-    try {
-      const res = await fetch("https://next-js-task-serve.vercel.app/products", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title,
-          shortDesc,
-          fullDesc,
-          price,
-          date,
-          category,
-          imageUrl,
-        }),
-      });
+    const newProduct = {
+      title,
+      shortDesc,
+      fullDesc,
+      price,
+      date,
+      createBy,
+      category,
+      imageUrl,
+    };
 
-      if (res.ok) {
-        setMessage("Product added successfully");
-        setTitle("");
-        setShortDesc("");
-        setFullDesc("");
-        setPrice("");
-        setCategory("Medium");
-        setImageUrl("");
-      } else {
-        setMessage("Failed to add product");
-      }
-    } catch (error) {
-      setMessage("Error submitting form");
+    // Axios POST request
+    const res = await axios.post(
+      "http://localhost:5000/products",
+      newProduct
+    );
+
+    if (res.status === 200 || res.status === 201) {
+      toast.success("Product added successfully")
+      setTitle("");
+      setShortDesc("");
+      setFullDesc("");
+      setPrice("");
+      setCategory("Select a category");
+      setImageUrl("");
+    } else {
+      setMessage("Failed to add product");
     }
   };
 
@@ -69,9 +72,7 @@ export default function AddProductPage() {
 
       {message && <p className="mb-3 text-sm text-red-600">{message}</p>}
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
           className="w-full border px-3 py-2 rounded"
           type="text"
@@ -106,7 +107,8 @@ export default function AddProductPage() {
         <select
           className="w-full border px-3 py-2 rounded bg-blue-950"
           value={category}
-          onChange={(e) => setCategory(e.target.value)}>
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option defaultValue={"Select a category"}>Select a category</option>
           <option>Smartphones</option>
           <option>Laptops</option>
@@ -126,7 +128,8 @@ export default function AddProductPage() {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded">
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
           Submit
         </button>
       </form>

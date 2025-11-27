@@ -2,6 +2,7 @@
 
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+// import Image from "next/image";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
@@ -11,12 +12,12 @@ export default function Navbar() {
     <li key="home">
       <Link href="/">Home</Link>
     </li>,
-    <li key="all-product">
-      <Link href="all-product">All Product</Link>
+    <li key="products">
+      <Link href="/products">All Product</Link>
     </li>,
     ...(session
       ? [
-          <li key="add-product">
+          <li key="/add-product">
             <Link href="/add-product">Add Product</Link>
           </li>,
           <li key="manage-products">
@@ -25,15 +26,15 @@ export default function Navbar() {
         ]
       : []),
     <li key="about">
-      <Link href="about">About Us</Link>
+      <Link href="/about">About Us</Link>
     </li>,
     <li key="contact">
-      <Link href="contact">Contact</Link>
+      <Link href="/contact">Contact</Link>
     </li>,
   ];
 
   return (
-    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+    <div className="navbar bg-gray-900 shadow-xl sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -77,10 +78,17 @@ export default function Navbar() {
               tabIndex={0}
               className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img
-                  src={user?.image || "/default-avatar.png"}
-                  alt="Profile"
-                />
+                {user?.image ? (
+                  <img
+                    src={user?.image}
+                    alt="Profile"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
+                ) : (
+                  <span className="bg-gray-300 w-10 h-10 rounded-full inline-block" />
+                )}
               </div>
             </div>
             <ul
@@ -91,7 +99,10 @@ export default function Navbar() {
               </li>
               <li>
                 <button
-                  onClick={() => signOut({ callbackUrl: "/" })} // Redirect after logout
+                  onClick={() => {
+                    signOut({ callbackUrl: "/" })
+                    toast.success("LogOut Successfully.")
+                  }} // Redirect after logout
                   className="w-full text-left">
                   Logout
                 </button>

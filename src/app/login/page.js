@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import GoogleLoginBtn from "@/components/auth/GoogleLoginBtn";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -28,6 +29,7 @@ export default function LoginPage() {
       setError(res.error);
       setLoading(false);
     } else {
+      toast.success("Login successful.")
       router.push("/");
     }
   }

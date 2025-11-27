@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 
 export default function GoogleLoginBtn() {
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,12 @@ export default function GoogleLoginBtn() {
   const handleGoogleLogin = async () => {
     setLoading(true);
     try {
-      await signIn("google", { callbackUrl: "/" });
+      await signIn(
+        "google",
+        { callbackUrl: "/" },
+        toast.success("Google login successfully.")
+      );
+      // toast.success("Google login successful.");
     } catch (error) {
       console.error("Login error:", error);
       setLoading(false);
@@ -20,9 +26,12 @@ export default function GoogleLoginBtn() {
     <button
       onClick={handleGoogleLogin}
       className="w-full p-2 border rounded flex items-center justify-center gap-2"
-      disabled={loading}
-    >
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+      disabled={loading}>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        aria-hidden>
         <path
           d="M21.35 11.1H12v2.8h5.35c-.23 1.34-1.05 2.48-2.24 3.23v2.67h3.62C20.8 18.05 22 14.8 22 12c0-.64-.06-1.26-.18-1.9z"
           fill="#4285F4"

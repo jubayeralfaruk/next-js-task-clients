@@ -12,10 +12,6 @@ export default function Testimonials() {
       name: "Clara Lee",
       message: "I love the variety of tech products available.",
     },
-    {
-      name: "David Kim",
-      message: "Smooth shopping experience and reliable service.",
-    },
   ];
   return (
     <section className="py-16">
