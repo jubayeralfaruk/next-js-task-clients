@@ -23,7 +23,7 @@ export default function ManageProductsPage() {
     if (!session) return;
 
     const res = await axios.get(
-      `http://localhost:5000/products?email=${session.user.email}`
+      `https://next-js-task-server-seven.vercel.app/products?email=${session.user.email}`
     );
     setProducts(res.data);
   };
@@ -42,10 +42,10 @@ export default function ManageProductsPage() {
     if (!confirmDelete) return;
 
     const res = await axios.delete(
-      `http://localhost:5000/products/${id}`
+      `https://next-js-task-server-seven.vercel.app/products/${id}`
     );
     if (res.status === 200) {
-      toast.success("Product deleted successfully")
+      toast.success("Product deleted successfully");
       fetchProducts();
     } else {
       setMessage("Failed to delete product");

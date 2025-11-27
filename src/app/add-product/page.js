@@ -49,12 +49,12 @@ export default function AddProductPage() {
 
     // Axios POST request
     const res = await axios.post(
-      "http://localhost:5000/products",
+      "https://next-js-task-server-seven.vercel.app/products",
       newProduct
     );
 
     if (res.status === 200 || res.status === 201) {
-      toast.success("Product added successfully")
+      toast.success("Product added successfully");
       setTitle("");
       setShortDesc("");
       setFullDesc("");
@@ -72,7 +72,9 @@ export default function AddProductPage() {
 
       {message && <p className="mb-3 text-sm text-red-600">{message}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4">
         <input
           className="w-full border px-3 py-2 rounded"
           type="text"
@@ -107,8 +109,7 @@ export default function AddProductPage() {
         <select
           className="w-full border px-3 py-2 rounded bg-blue-950"
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
+          onChange={(e) => setCategory(e.target.value)}>
           <option defaultValue={"Select a category"}>Select a category</option>
           <option>Smartphones</option>
           <option>Laptops</option>
@@ -128,8 +129,7 @@ export default function AddProductPage() {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded"
-        >
+          className="px-4 py-2 bg-blue-600 text-white rounded">
           Submit
         </button>
       </form>

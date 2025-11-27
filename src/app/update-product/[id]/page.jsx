@@ -23,7 +23,7 @@ export default function UpdateProductPage() {
   // Fetch product data ONCE
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/${id}`)
+      .get(`https://next-js-task-server-seven.vercel.app/products/${id}`)
       .then((res) => setProduct(res.data));
   }, [id]);
 
@@ -40,12 +40,12 @@ export default function UpdateProductPage() {
     };
 
     const res = await axios.patch(
-      `http://localhost:5000/products/${id}`,
+      `https://next-js-task-server-seven.vercel.app/products/${id}`,
       formData
     );
 
     if (res.status === 200) {
-      toast.success("Product updated successfully")
+      toast.success("Product updated successfully");
       router.push("/manage-products");
     } else {
       setMessage("Failed to update product");
@@ -60,7 +60,9 @@ export default function UpdateProductPage() {
 
       {message && <p className="mb-4 text-sm text-green-600">{message}</p>}
 
-      <form onSubmit={handleUpdate} className="space-y-4">
+      <form
+        onSubmit={handleUpdate}
+        className="space-y-4">
         <input
           name="title"
           className="w-full border px-3 py-2 rounded"
@@ -95,8 +97,7 @@ export default function UpdateProductPage() {
         <select
           name="category"
           className="w-full border px-3 py-2 rounded bg-blue-950 text-white"
-          defaultValue={product.category}
-        >
+          defaultValue={product.category}>
           <option>Select a category</option>
           <option>Smartphones</option>
           <option>Laptops</option>
@@ -116,8 +117,7 @@ export default function UpdateProductPage() {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-yellow-600 text-white rounded"
-        >
+          className="px-4 py-2 bg-yellow-600 text-white rounded">
           Update
         </button>
       </form>

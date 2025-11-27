@@ -12,10 +12,10 @@ export default function ProductDetailsClient({ id }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/${id}`)
+      .get(`https://next-js-task-server-seven.vercel.app/products/${id}`)
       .then((res) => {
         console.log("data fetch", res);
-        
+
         setProduct(res.data);
         setLoading(false);
       })
@@ -25,15 +25,12 @@ export default function ProductDetailsClient({ id }) {
       });
   }, [id]);
 
-  if (loading)
-    return <p className="p-10 text-center">Loading...</p>;
+  if (loading) return <p className="p-10 text-center">Loading...</p>;
 
-  if (error)
-    return <p className="p-10 text-center text-red-500">{error}</p>;
+  if (error) return <p className="p-10 text-center text-red-500">{error}</p>;
 
   return (
     <div className="max-w-4xl mx-auto py-14 px-4">
-
       {/* Large Banner Image */}
       <img
         src={product.imageUrl}
@@ -70,8 +67,7 @@ export default function ProductDetailsClient({ id }) {
       {/* Back Button */}
       <Link
         href="/products"
-        className="inline-block mt-10 bg-gray-800 text-white px-5 py-2 rounded hover:bg-gray-900 transition"
-      >
+        className="inline-block mt-10 bg-gray-800 text-white px-5 py-2 rounded hover:bg-gray-900 transition">
         ← Back to Products
       </Link>
     </div>

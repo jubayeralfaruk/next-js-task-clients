@@ -11,9 +11,11 @@ export default function ProductsListPage() {
   const [category, setCategory] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/products").then((res) => {
-      setProducts(res.data);
-    });
+    axios
+      .get("https://next-js-task-server-seven.vercel.app/products")
+      .then((res) => {
+        setProducts(res.data);
+      });
     // setFilteredData(filtered)
   }, []);
   const filtered = products.filter((p) => {
