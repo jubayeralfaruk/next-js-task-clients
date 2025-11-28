@@ -27,7 +27,7 @@ export default function NewProducts() {
     <section className="py-14 px-6 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold">🆕 New Products</h1>
+        <h1 className="text-4xl font-bold">New Products</h1>
         <p className="text-gray-600 mt-2">
           Check out the latest arrivals in our store.
         </p>

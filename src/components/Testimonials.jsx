@@ -18,7 +18,7 @@ export default function Testimonials() {
       <h2 className="text-3xl font-bold mb-8 text-center">
         What Our Customers Say
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto text-[#313647]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto text-[#313647]">
         {testimonials.map((t, idx) => (
           <div
             key={idx}
