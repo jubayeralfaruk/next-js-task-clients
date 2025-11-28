@@ -56,7 +56,7 @@ export default function UpdateProductPage() {
   if (!product) return <p className="p-6">Loading...</p>;
 
   return (
-    <div className="max-w-md mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Update Product</h1>
 
       {message && <p className="mb-4 text-sm text-green-600">{message}</p>}

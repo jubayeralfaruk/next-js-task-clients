@@ -24,7 +24,7 @@ export default function NewProducts() {
     return <p className="p-10 text-center text-lg">Loading New Products...</p>;
 
   return (
-    <section className="py-14 px-4 max-w-7xl mx-auto">
+    <section className="py-14 px-6 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold">🆕 New Products</h1>

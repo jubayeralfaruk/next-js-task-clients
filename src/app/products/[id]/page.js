@@ -34,7 +34,7 @@ export default function ProductDetailsPage() {
   if (error) return <p className="p-10 text-center text-red-500">{error}</p>;
 
   return (
-    <div className="max-w-4xl mx-auto py-14 px-4">
+    <div className="mx-auto py-14 px-6 md:max-w-lg lg:max-w-4xl">
       {/* Large Banner Image */}
       <img
         src={product.imageUrl}
@@ -67,6 +67,11 @@ export default function ProductDetailsPage() {
 
       {/* Full Description */}
       <p className="mt-8 text-lg leading-relaxed">{product.fullDesc}</p>
+
+      <p className="text-teal-800 pt-6">
+        If you want to buy the product, you can email the product owner. <br/>
+        <span>Owner Email: {product.createBy}</span>
+      </p>
 
       {/* Back Button */}
       <Link

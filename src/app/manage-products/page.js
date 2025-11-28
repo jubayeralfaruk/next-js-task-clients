@@ -54,7 +54,7 @@ export default function ManageProductsPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Manage My Products</h1>
 
       {message && <p className="mb-4 text-sm text-green-600">{message}</p>}

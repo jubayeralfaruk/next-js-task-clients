@@ -80,7 +80,7 @@ export default function Footer() {
 
       {/* Bottom Strip */}
       <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
-        © {new Date().getFullYear()} MyWebsite — All Rights Reserved.
+        © {new Date().getFullYear()} Take Your Gadgets — All Rights Reserved.
       </div>
     </footer>
   );

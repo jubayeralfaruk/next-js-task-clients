@@ -9,7 +9,7 @@ export default function ContactPage() {
       </p>
 
       {/* Contact Form */}
-      <form className="space-y-6 bg-blue-950 p-8 rounded-xl shadow">
+      <form className="space-y-6 bg-blue-950 rounded-xl shadow max-w-7xl mx-auto p-6">
         <div>
           <label className="block text-sm font-medium mb-1">Your Name</label>
           <input

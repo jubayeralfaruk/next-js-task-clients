@@ -30,7 +30,7 @@ export default function Deals() {
   ];
 
   return (
-    <section className="py-14 max-w-6xl mx-auto">
+    <section className="py-14 max-w-7xl mx-auto px-6">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-2">🔥 Hot Deals</h1>

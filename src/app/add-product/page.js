@@ -68,7 +68,7 @@ export default function AddProductPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Add Product</h1>
 
       {message && <p className="mb-3 text-sm text-red-600">{message}</p>}

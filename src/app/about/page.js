@@ -29,7 +29,7 @@ export default function AboutPage() {
       </div>
 
       {/* Section 2: What We Offer */}
-      <div className="grid md:grid-cols-2 gap-10 items-center mb-20">
+      <div className="grid md:grid-cols-2 gap-10 items-center mb-20 max-w-7xl mx-auto p-6">
         <div>
           <h2 className="text-3xl font-bold mb-4">What We Offer</h2>
           <p className="text-gray-700 leading-relaxed mb-3">
