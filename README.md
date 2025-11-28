@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Take Your Gadgets
+Project Live Link: [https://next-js-task-clients.vercel.app/](https://next-js-task-clients.vercel.app/)
 
-## Getting Started
+Server GitHub Link: [https://github.com/jubayeralfaruk/next-js-task-serve](https://github.com/jubayeralfaruk/next-js-task-serve)
 
-First, run the development server:
+## Project Description
+Take Your Gadgets is a modern e-commerce web application built with **Next.js**.  
+The platform allows users to browse, search, and view tech products with detailed descriptions.  
+It also includes authentication using **Firebase** and social login with Google.
 
-```bash
+**Key Features:**
+- Browse products by category
+- Search and filter products
+- View product details (images, price, full description)
+- Authentication with email/password and Google
+- Responsive and modern UI
+- Admin/owner can manage products (optional feature)
+
+---
+
+## Setup & Installation
+
+### Prerequisites
+- Node.js (v18 or above recommended)
+- npm or yarn
+- Firebase account
+
+### Installation Steps
+
+1. Clone the repository:
+
+git clone https://github.com/your-username/take-your-gadgets.git
+cd take-your-gadgets
+
+3. Install dependencies:
+
+npm install
+# or
+yarn install
+
+3. Create a .env file in the root directory and add your Firebase and NextAuth credentials:
+
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=xxxxxx
+NEXT_PUBLIC_FIREBASE_APP_ID=xxxxxx
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
+
+4. Run the development server:
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open your browser and visit:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+http://localhost:3000
