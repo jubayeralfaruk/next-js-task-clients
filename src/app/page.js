@@ -7,6 +7,7 @@ import NewProducts from "@/components/NewProducts";
 import Newsletter from "@/components/Newsletter";
 import Brands from "@/components/Brands";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Reviews />
       <Brands />
       <WhyChooseUs />
+      <Testimonials />
       <Newsletter />
     </div>
   );
