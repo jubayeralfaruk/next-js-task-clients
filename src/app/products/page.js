@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function ProductsListPage() {
+function ProductsContent() {
   const searchParams = useSearchParams();
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
@@ -244,5 +244,22 @@ export default function ProductsListPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+function ProductsLoading() {
+  return (
+    <div className="max-w-7xl mx-auto px-6 py-16 text-center">
+      <div className="loading loading-spinner loading-lg"></div>
+      <p className="mt-4 text-white">Loading products...</p>
+    </div>
+  );
+}
+
+export default function ProductsListPage() {
+  return (
+    <Suspense fallback={<ProductsLoading />}>
+      <ProductsContent />
+    </Suspense>
   );
 }
