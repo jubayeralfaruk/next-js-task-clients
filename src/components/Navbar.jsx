@@ -1,28 +1,42 @@
 "use client";
 
 import { useSession, signOut } from "next-auth/react";
+import { useMockAuth } from "@/contexts/MockAuthContext";
 import Link from "next/link";
 import { toast } from "react-toastify";
-// import Image from "next/image";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
-  const user = session?.user;
+  const { user: mockUser, logout: mockLogout, isAuthenticated: mockAuth } = useMockAuth();
+  
+  // Use mock auth as primary, NextAuth as fallback
+  const user = mockUser || session?.user;
+  const isAuthenticated = mockAuth || !!session;
+
+  const handleLogout = async () => {
+    if (mockUser) {
+      await mockLogout();
+      toast.success("Logged out successfully!");
+    } else if (session) {
+      signOut({ callbackUrl: "/" });
+      toast.success("Logged out successfully!");
+    }
+  };
 
   const links = [
     <li key="home">
       <Link href="/">Home</Link>
     </li>,
     <li key="products">
-      <Link href="/products">All Product</Link>
+      <Link href="/products">Products</Link>
     </li>,
-    ...(session
+    ...(isAuthenticated
       ? [
           <li key="/add-product">
-            <Link href="/add-product">Add Product</Link>
+            <Link href="/add-product">Add Item</Link>
           </li>,
           <li key="manage-products">
-            <Link href="/manage-products">Manage Products</Link>
+            <Link href="/manage-products">Manage Items</Link>
           </li>,
         ]
       : []),
@@ -63,17 +77,17 @@ export default function Navbar() {
         </div>
         <Link
           href="/"
-          className="text-xl font-bold cursor-pointer">
+          className="text-xl font-bold cursor-pointer text-white">
           Take Your Gadgets
         </Link>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 text-white">{links}</ul>
       </div>
 
       <div className="navbar-end">
-        {session ? (
+        {isAuthenticated ? (
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -88,7 +102,11 @@ export default function Navbar() {
                     className="rounded-full"
                   />
                 ) : (
-                  <span className="bg-gray-300 w-10 h-10 rounded-full inline-block" />
+                  <div className="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center">
+                    <span className="text-gray-600 font-bold">
+                      {user?.name?.charAt(0) || user?.email?.charAt(0) || 'U'}
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
@@ -96,14 +114,13 @@ export default function Navbar() {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow">
               <li>
-                <a>Profile</a>
+                <span className="text-sm text-gray-600">
+                  {user?.email || 'User'}
+                </span>
               </li>
               <li>
                 <button
-                  onClick={() => {
-                    signOut({ callbackUrl: "/" })
-                    toast.success("LogOut Successfully.")
-                  }} // Redirect after logout
+                  onClick={handleLogout}
                   className="w-full text-left">
                   Logout
                 </button>
@@ -112,8 +129,8 @@ export default function Navbar() {
           </div>
         ) : (
           <Link
-            className="btn"
-            href="login">
+            className="btn btn-primary"
+            href="/login">
             Login
           </Link>
         )}

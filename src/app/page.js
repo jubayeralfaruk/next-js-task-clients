@@ -1,19 +1,23 @@
 'use client'; 
 
 import Categories from "@/components/Categories";
-import Deals from "@/components/Deals";
+import Reviews from "@/components/Reviews";
 import Hero from "@/components/Hero";
 import NewProducts from "@/components/NewProducts";
-import Testimonials from "@/components/Testimonials";
+import Newsletter from "@/components/Newsletter";
+import Brands from "@/components/Brands";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default function Home() {
   return (
     <div className="mx-3">
       <Hero />
-      <NewProducts />
       <Categories />
-      <Deals />
-      <Testimonials />
+      <NewProducts />
+      <Reviews />
+      <Brands />
+      <WhyChooseUs />
+      <Newsletter />
     </div>
   );
 }

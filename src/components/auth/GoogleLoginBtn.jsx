@@ -10,13 +10,20 @@ export default function GoogleLoginBtn() {
   const handleGoogleLogin = async () => {
     setLoading(true);
     try {
-      await signIn(
-        "google",
-        { callbackUrl: "/" },
-        toast.success("Google login successfully.")
-      );
+      const result = await signIn("google", { 
+        callbackUrl: "/products",
+        redirect: false 
+      });
+      
+      if (result?.error) {
+        toast.error("Google login failed. Please try again.");
+      } else {
+        toast.success("Google login successful!");
+      }
     } catch (error) {
       console.error("Login error:", error);
+      toast.error("Google login failed. Please try again.");
+    } finally {
       setLoading(false);
     }
   };
