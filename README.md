@@ -160,7 +160,7 @@ The application integrates with an Express.js backend API:
   - `POST /products` - Create new product
   - `GET /products/:id` - Fetch single product
 
-## 🎨 UI/UX Features
+## UI/UX Features
 
 - **Dark Theme**: Modern dark theme with gray color scheme
 - **DaisyUI Components**: Pre-built UI components
